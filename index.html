@@ -95,11 +95,11 @@ nav a {
 .bubble {
   position:fixed;
   bottom:-50px;
-  width:20px;
-  height:20px;
-  background:rgba(255,255,255,0.5);
+  width:15px;
+  height:15px;
+  background:rgba(255,255,255,0.4);
   border-radius:50%;
-  animation:rise 10s infinite;
+  animation:rise linear infinite;
 }
 
 @keyframes rise {
@@ -107,12 +107,12 @@ nav a {
   100% {transform:translateY(-120vh);}
 }
 
-/* FISH */
-.fish {
+/* SHRIMP */
+.shrimp {
   position:fixed;
-  width:40px;
+  width:35px;
+  transition: transform 0.4s ease;
   pointer-events:none;
-  transition: transform 0.2s linear;
 }
 </style>
 </head>
@@ -167,31 +167,53 @@ nav a {
 
 <!-- BUBBLES -->
 <script>
-for(let i=0;i<20;i++){
+for(let i=0;i<25;i++){
   let b=document.createElement("div");
   b.className="bubble";
   b.style.left=Math.random()*100+"vw";
-  b.style.animationDuration=(5+Math.random()*5)+"s";
+  b.style.animationDuration=(6+Math.random()*6)+"s";
   document.body.appendChild(b);
 }
 </script>
 
-<!-- FISH FOLLOW -->
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="fish" id="fish1">
-<img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="fish" id="fish2">
-
+<!-- SHRIMP SYSTEM -->
 <script>
-let fish1=document.getElementById("fish1");
-let fish2=document.getElementById("fish2");
+const shrimpColors = [
+  "https://cdn-icons-png.flaticon.com/512/616/616430.png",
+  "https://cdn-icons-png.flaticon.com/512/616/616408.png"
+];
 
-let x=0,y=0;
+let shrimps=[];
+
+for(let i=0;i<5;i++){
+  let s=document.createElement("img");
+  s.src=shrimpColors[i%shrimpColors.length];
+  s.className="shrimp";
+
+  let x=Math.random()*window.innerWidth;
+  let y=Math.random()*window.innerHeight;
+
+  s.style.left=x+"px";
+  s.style.top=y+"px";
+
+  document.body.appendChild(s);
+
+  shrimps.push({el:s,x,y});
+}
 
 document.addEventListener("mousemove",(e)=>{
-  x+=(e.clientX-x)*0.05;
-  y+=(e.clientY-y)*0.05;
+  shrimps.forEach(s=>{
+    let dx=s.x - e.clientX;
+    let dy=s.y - e.clientY;
+    let dist=Math.sqrt(dx*dx+dy*dy);
 
-  fish1.style.transform=`translate(${x}px,${y}px)`;
-  fish2.style.transform=`translate(${x-60}px,${y+40}px)`;
+    if(dist < 120){
+      s.x += dx * 0.3;
+      s.y += dy * 0.3;
+
+      s.el.style.transform = `translate(${s.x}px, ${s.y}px)`;
+    }
+  });
 });
 </script>
 
