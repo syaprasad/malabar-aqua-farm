@@ -4,55 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Malabar Aqua Farm</title>
-  <link rel="stylesheet" href="styles.css">
 
-  <!-- Google Font (Apple-like) -->
+  <!-- Apple-style font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">Malabar Aqua Farm</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#">Plants</a>
-      <a href="#">Shrimps</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">Malabar Aqua Farm</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#products">Products</a>
+    <a href="#contact">Contact</a>
+    <button id="darkToggle">🌙</button>
+  </nav>
+</header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="logo.png" alt="Malabar Aqua Farm Logo">
-    <h1>Premium Aquatic Plants & Shrimps</h1>
-    <p>Fresh. Healthy. Beautiful aquascaping essentials.</p>
-    <button>Explore Collection</button>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <img src="logo.png" alt="Malabar Aqua Farm Logo">
+  <h1>Premium Aquatic Plants & Shrimps</h1>
+  <p>Clean. Natural. Beautiful aquascaping.</p>
+  <a href="#products"><button>Explore</button></a>
+</section>
 
-  <!-- Products Section -->
-  <section class="products">
-    <h2>Our Collection</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>Aquatic Plants</h3>
-        <p>Vibrant plants for natural aquascaping.</p>
-      </div>
-      <div class="card">
-        <h3>Freshwater Shrimps</h3>
-        <p>High-quality shrimp breeds.</p>
-      </div>
-      <div class="card">
-        <h3>Aquarium Care</h3>
-        <p>Everything your tank needs.</p>
-      </div>
+<!-- PRODUCTS -->
+<section id="products" class="products">
+  <h2>Our Collection</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?aquatic-plants">
+      <h3>Aquatic Plants</h3>
+      <p>Fresh and vibrant plants</p>
     </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 Malabar Aqua Farm. All rights reserved.</p>
-  </footer>
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?shrimp,aquarium">
+      <h3>Freshwater Shrimps</h3>
+      <p>Healthy premium breeds</p>
+    </div>
+
+    <div class="card">
+      <img src="https://source.unsplash.com/300x200/?aquascape">
+      <h3>Aquarium Setup</h3>
+      <p>Everything you need</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p>Order directly via WhatsApp</p>
+
+  <!-- Replace your number -->
+  <a href="https://wa.me/91XXXXXXXXXX" target="_blank">
+    <button class="whatsapp">Chat on WhatsApp</button>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Malabar Aqua Farm</p>
+</footer>
+
+<!-- JS -->
+<script>
+  const toggle = document.getElementById("darkToggle");
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+  });
+</script>
 
 </body>
 </html>
