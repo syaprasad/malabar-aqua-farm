@@ -87,7 +87,7 @@ nav {
   color:#666;
 }
 
-/* FLOATING WHATSAPP */
+/* WHATSAPP BUTTON */
 .whatsapp {
   position:fixed;
   bottom:20px;
@@ -103,9 +103,8 @@ nav {
 /* FISH */
 .fish {
   position:fixed;
-  font-size:24px;
+  font-size:22px;
   pointer-events:none;
-  transition: transform 0.2s linear;
 }
 </style>
 </head>
@@ -119,7 +118,7 @@ nav {
 <section class="hero">
   <h1>Premium Aquatic Plants & Shrimp</h1>
   <p>Kerala Based • Healthy • Handpicked</p>
-  <a class="btn" href="https://wa.me/919876543210">Shop on WhatsApp</a>
+  <a class="btn" href="https://wa.me/91XXXXXXXXXX">Shop on WhatsApp</a>
 </section>
 
 <section class="section">
@@ -160,42 +159,40 @@ nav {
   </div>
 </section>
 
-<a class="whatsapp" href="https://wa.me/919876543210">💬</a>
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">💬</a>
 
-<!-- FISH SCRIPT -->
+<!-- FISH SCRIPT (FINAL FIXED) -->
 <script>
-const fishes = [];
-const fishEmojis = ["🐠","🐟","🐡","🐠"];
+let fishes = [];
+let mouse = {x: window.innerWidth/2, y: window.innerHeight/2};
+
+const emojis = ["🐠","🐟","🐡","🐠"];
 
 for(let i=0;i<4;i++){
-  const fish = document.createElement("div");
-  fish.className = "fish";
-  fish.innerHTML = fishEmojis[i];
-  document.body.appendChild(fish);
+  let f = document.createElement("div");
+  f.className = "fish";
+  f.innerHTML = emojis[i];
+  document.body.appendChild(f);
+
   fishes.push({
-    el: fish,
+    el: f,
     x: Math.random()*window.innerWidth,
     y: Math.random()*window.innerHeight
   });
 }
 
-let mouseX = window.innerWidth/2;
-let mouseY = window.innerHeight/2;
-
-document.addEventListener("mousemove", (e)=>{
-  mouseX = e.clientX;
-  mouseY = e.clientY;
+document.addEventListener("mousemove", e=>{
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
 });
 
 function animate(){
-  fishes.forEach((fish, index)=>{
-    const dx = mouseX - fish.x;
-    const dy = mouseY - fish.y;
+  fishes.forEach((f,i)=>{
+    f.x += (mouse.x - f.x) * (0.01 + i*0.003);
+    f.y += (mouse.y - f.y) * (0.01 + i*0.003);
 
-    fish.x += dx * (0.01 + index*0.002);
-    fish.y += dy * (0.01 + index*0.002);
-
-    fish.el.style.transform = `translate(${fish.x}px, ${fish.y}px)`;
+    f.el.style.left = f.x + "px";
+    f.el.style.top = f.y + "px";
   });
 
   requestAnimationFrame(animate);
