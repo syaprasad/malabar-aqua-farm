@@ -26,38 +26,31 @@
 <section class="hero">
   <h1>Premium Aquatic Store</h1>
   <p>Plants • Shrimps • Fish Food</p>
-  
 </section>
 
-<!-- PRODUCTS -->
-<section class="products">
+<!-- CATEGORIES -->
+<section class="categories">
 
-  <h2>Featured Products</h2>
+  <h2>Shop by Category</h2>
 
-  <div class="grid">
+  <div class="category-grid">
 
-    <!-- ITEM -->
-    <div class="card">
-      <img src="images/item1.jpg">
-
-      <h3>Sample Item</h3>
-      <p class="price">₹100</p>
-
-      <p class="stock">In Stock</p>
-
-      <button onclick="order('Sample Item')">Order</button>
+    <!-- CATEGORY -->
+    <div class="category-card">
+      <img src="images/plants.jpg">
+      <h3>Aquatic Plants</h3>
     </div>
 
-    <!-- SOLD OUT ITEM -->
-    <div class="card sold">
-      <img src="images/item2.jpg">
+    <!-- CATEGORY -->
+    <div class="category-card">
+      <img src="images/shrimps.jpg">
+      <h3>Shrimps</h3>
+    </div>
 
-      <h3>Sample Item 2</h3>
-      <p class="price">₹120</p>
-
-      <p class="stock">Out of Stock</p>
-
-      <button disabled>Sold Out</button>
+    <!-- CATEGORY -->
+    <div class="category-card">
+      <img src="images/fishfood.jpg">
+      <h3>Fish Food</h3>
     </div>
 
   </div>
@@ -85,14 +78,6 @@
   </div>
 
 </footer>
-
-<script>
-function order(item){
-  const number = "91XXXXXXXXXX"; // replace your number
-  const msg = `I want to order ${item}`;
-  window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
-}
-</script>
 
 </body>
 </html>
