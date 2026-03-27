@@ -16,9 +16,9 @@
   <div class="logo">🌿 Malabar Aqua Farm</div>
 
   <nav>
-    <a href="#">Aquatic Plants</a>
-    <a href="#">Shrimps</a>
-    <a href="#">Contact</a>
+    <a href="#plants">Plants</a>
+    <a href="#shrimps">Shrimps</a>
+    <a href="#fishfood">Fish Food</a>
   </nav>
 </header>
 
@@ -28,56 +28,180 @@
   <p>Plants • Shrimps • Fish Food</p>
 </section>
 
-<!-- CATEGORIES -->
+<!-- ================= CATEGORIES ================= -->
 <section class="categories">
 
   <h2>Shop by Category</h2>
 
   <div class="category-grid">
 
-    <!-- CATEGORY -->
     <div class="category-card">
-      <img src="images/plants.jpg">
+      <h3>Neocaridina Shrimp</h3>
+    </div>
+
+    <div class="category-card">
       <h3>Aquatic Plants</h3>
     </div>
 
-    <!-- CATEGORY -->
     <div class="category-card">
-      <img src="images/shrimps.jpg">
-      <h3>Shrimps</h3>
+      <h3>Live Fish Food</h3>
     </div>
 
-    <!-- CATEGORY -->
     <div class="category-card">
-      <img src="images/fishfood.jpg">
-      <h3>Fish Food</h3>
+      <h3>Pellet Food</h3>
     </div>
 
   </div>
 
 </section>
 
+<!-- ================= SHRIMPS ================= -->
+<section id="shrimps" class="products">
+<h2>Neocaridina Shrimps</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/cherry.jpg">
+<h3>Cherry Shrimp</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Cherry Shrimp')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/blue.jpg">
+<h3>Blue Shrimp</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Blue Shrimp')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/yellow.jpg">
+<h3>Yellow Shrimp</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Yellow Shrimp')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/orange.jpg">
+<h3>Orange Shrimp</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Orange Shrimp')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/black.jpg">
+<h3>Black Shrimp</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Black Shrimp')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/rilli.jpg">
+<h3>Red Rilli Shrimp</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Red Rilli Shrimp')">Order</button>
+</div>
+
+</div>
+</section>
+
+<!-- ================= PLANTS ================= -->
+<section id="plants" class="products">
+<h2>Aquatic Plants</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/guppygrass.jpg">
+<h3>Najas guadalupensis (Guppy Grass)</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Guppy Grass')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/foxtail.jpg">
+<h3>Ceratophyllum demersum (Foxtail)</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Foxtail')">Order</button>
+</div>
+
+<div class="card">
+<img src="images/montecarlo.jpg">
+<h3>Micranthemum tweediei (Monte Carlo)</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Monte Carlo')">Order</button>
+</div>
+
+</div>
+</section>
+
+<!-- ================= LIVE FOOD ================= -->
+<section id="fishfood" class="products">
+<h2>Live Fish Food</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/moina.jpg">
+<h3>Moina Culture</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Moina Culture')">Order</button>
+</div>
+
+</div>
+</section>
+
+<!-- ================= PELLET ================= -->
+<section class="products">
+<h2>Pellet Food</h2>
+
+<div class="grid">
+
+<div class="card">
+<img src="images/pellet.jpg">
+<h3>20g Loose Pack</h3>
+<p class="price">₹--</p>
+<p class="stock">Stock: --</p>
+<button onclick="order('Pellet Food 20g')">Order</button>
+</div>
+
+</div>
+</section>
+
 <!-- FOOTER -->
 <footer class="footer">
+<div class="footer-grid">
+<div>
+<h4>Information</h4>
+<p>About Us</p>
+<p>Contact</p>
+</div>
 
-  <div class="footer-grid">
-
-    <div>
-      <h4>Information</h4>
-      <p>About Us</p>
-      <p>Contact</p>
-      <p>Privacy Policy</p>
-    </div>
-
-    <div>
-      <h4>Contact</h4>
-      <p>Phone: +91 XXXXXXXX</p>
-      <p>Email: your@email.com</p>
-    </div>
-
-  </div>
-
+<div>
+<h4>Contact</h4>
+<p>Phone: +91 XXXXXXXX</p>
+</div>
+</div>
 </footer>
+
+<script>
+function order(item){
+  const number = "91XXXXXXXXXX";
+  const msg = `I want to order ${item}`;
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
+}
+</script>
 
 </body>
 </html>
