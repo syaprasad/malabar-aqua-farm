@@ -1,37 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malabar Aqua Farm</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  overflow:hidden;
+  font-family:'Inter',sans-serif;
+  background: radial-gradient(circle at top, #0b2a35, #05161c 80%);
+  color:white;
+}
+
+/* LIGHT WATER EFFECT */
+body::before{
+  content:"";
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle at 50% 20%, rgba(0,150,255,0.12), transparent 60%);
+  pointer-events:none;
+}
+
+/* NAV */
+nav{
+  position:fixed;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  padding:20px 40px;
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(10px);
+  z-index:10;
+}
+
+nav a{
+  color:white;
+  margin-left:20px;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  position:absolute;
+  top:40%;
+  width:100%;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:48px;
+}
+
+/* SHRIMP */
+.shrimp{
+  position:fixed;
+  width:70px;
+  pointer-events:none;
+  transition:transform 0.2s linear;
+}
+
+/* BUBBLE */
+.bubble{
+  position:fixed;
+  width:10px;
+  height:10px;
+  background:rgba(255,255,255,0.4);
+  border-radius:50%;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div>🌿 Malabar Aqua Farm</div>
+  <div>
+    <a href="#">Plants</a>
+    <a href="#">Shrimp</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Underwater Experience</h1>
+  <p>Premium Aquatic Life</p>
+</div>
+
 <script>
+
 // =======================
-// 🦐 SHRIMP AI (SLOW + SMOOTH)
+// 🫧 BUBBLES (SAFE)
+// =======================
+function createBubble(){
+  let b=document.createElement("div");
+  b.className="bubble";
+
+  b.style.left=Math.random()*window.innerWidth+"px";
+  b.style.top=window.innerHeight+"px";
+
+  document.body.appendChild(b);
+
+  let speed=Math.random()*1+0.5;
+
+  function rise(){
+    let y=parseFloat(b.style.top);
+    b.style.top=(y-speed)+"px";
+
+    if(y<0) b.remove();
+    else requestAnimationFrame(rise);
+  }
+
+  rise();
+}
+
+setInterval(createBubble,400);
+
+// =======================
+// 🦐 SHRIMP (STABLE)
 // =======================
 
-const shrimpData=[
-  {
-    src:"https://upload.wikimedia.org/wikipedia/commons/3/3e/Neocaridina_davidi_red_cherry.png",
-    x:200,y:300
-  },
-  {
-    src:"https://upload.wikimedia.org/wikipedia/commons/6/60/Caridina_multidentata.png",
-    x:500,y:500
-  }
+let shrimpImages=[
+"https://upload.wikimedia.org/wikipedia/commons/3/3e/Neocaridina_davidi_red_cherry.png",
+"https://upload.wikimedia.org/wikipedia/commons/6/60/Caridina_multidentata.png"
 ];
 
 let shrimps=[];
 
-shrimpData.forEach(data=>{
+for(let i=0;i<2;i++){
   let s=document.createElement("img");
-  s.src=data.src;
+  s.src=shrimpImages[i];
   s.className="shrimp";
 
   document.body.appendChild(s);
 
   shrimps.push({
     el:s,
-    x:data.x,
-    y:data.y,
-    vx:(Math.random()*1.5)*0.5,   // 🔥 HALF SPEED
+    x:Math.random()*window.innerWidth,
+    y:Math.random()*window.innerHeight,
+    vx:(Math.random()*1.5)*0.5,
     vy:(Math.random()*1.5)*0.5
   });
-});
+}
 
+// MOUSE
 let mouse={x:0,y:0};
 
 document.addEventListener("mousemove",e=>{
@@ -39,24 +155,25 @@ document.addEventListener("mousemove",e=>{
   mouse.y=e.clientY;
 });
 
+// ANIMATION (SAFE LOOP)
 function animate(){
-  shrimps.forEach(s=>{
+
+  for(let s of shrimps){
 
     let dx=s.x-mouse.x;
     let dy=s.y-mouse.y;
     let dist=Math.sqrt(dx*dx+dy*dy);
 
-    // 🧠 ESCAPE (reduced power)
-    if(dist<150){
-      s.vx+=dx*0.015;   // 🔥 reduced from 0.03
+    // ESCAPE
+    if(dist<120){
+      s.vx+=dx*0.015;
       s.vy+=dy*0.015;
     }
 
-    // 🌊 FLOATING (softer)
+    // FLOAT
     s.vx+=(Math.random()-0.5)*0.02;
     s.vy+=(Math.random()-0.5)*0.02;
 
-    // SMOOTH DRAG
     s.vx*=0.99;
     s.vy*=0.99;
 
@@ -71,10 +188,14 @@ function animate(){
 
     s.el.style.transform=
       `translate(${s.x}px,${s.y}px) rotate(${angle}deg)`;
-  });
+  }
 
   requestAnimationFrame(animate);
 }
 
 animate();
+
 </script>
+
+</body>
+</html>
