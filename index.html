@@ -3,18 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>premium aquatic plants & shrimps</title>
+  <title>Malabar Aqua Farm</title>
 
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-
-<!-- TOP BAR -->
-<div class="topbar">
-  Minimum order 100 rupees
-</div>
 
 <!-- HEADER -->
 <header class="header">
@@ -23,15 +18,14 @@
   <nav>
     <a href="#">Aquatic Plants</a>
     <a href="#">Shrimps</a>
-    <a href="#">Accessories</a>
     <a href="#">Contact</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Malabar Aqua Farm</h1>
-  <p>Plants • Shrimps</p>
+  <h1>Premium Aquatic Store</h1>
+  <p>Plants • Shrimps • Aquascaping Essentials</p>
 </section>
 
 <!-- PRODUCTS -->
@@ -45,20 +39,20 @@
     <div class="card">
       <img src="images/item1.jpg">
 
-      <h3>Cherry Shrimp</h3>
-      <p class="price">₹59</p>
+      <h3>Sample Item</h3>
+      <p class="price">₹100</p>
 
       <p class="stock">In Stock</p>
 
-      <button onclick="order('Cherry Shrimp')">Order</button>
+      <button onclick="order('Sample Item')">Order</button>
     </div>
 
-    <!-- ITEM -->
+    <!-- SOLD OUT ITEM -->
     <div class="card sold">
       <img src="images/item2.jpg">
 
-      <h3>Amano Shrimp</h3>
-      <p class="price">₹80</p>
+      <h3>Sample Item 2</h3>
+      <p class="price">₹120</p>
 
       <p class="stock">Out of Stock</p>
 
@@ -93,7 +87,7 @@
 
 <script>
 function order(item){
-  const number = "91XXXXXXXXXX";
+  const number = "91XXXXXXXXXX"; // replace your number
   const msg = `I want to order ${item}`;
   window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
 }
