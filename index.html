@@ -1,176 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Malabar Aqua Farm</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-<style>
-body{
-  margin:0;
-  overflow:hidden;
-  font-family:'Inter',sans-serif;
-  background:linear-gradient(#081c24,#0c2d3a,#103b4a);
-  color:white;
-}
-
-/* DEPTH LAYERS */
-.layer{
-  position:fixed;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-}
-
-.bg{z-index:1;}
-.mid{z-index:2;}
-.front{z-index:3;}
-
-/* NAV */
-nav{
-  position:fixed;
-  width:100%;
-  display:flex;
-  justify-content:space-between;
-  padding:20px 40px;
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,0.05);
-  z-index:10;
-}
-
-nav a{color:white;margin-left:20px;text-decoration:none}
-
-/* HERO */
-.hero{
-  position:absolute;
-  top:40%;
-  width:100%;
-  text-align:center;
-  z-index:10;
-}
-
-/* SHRIMP */
-.shrimp{
-  position:absolute;
-  width:80px;
-  pointer-events:none;
-}
-
-/* FISH SHADOW */
-.fish{
-  position:absolute;
-  width:120px;
-  opacity:0.15;
-}
-
-/* BUBBLE */
-.bubble{
-  position:absolute;
-  background:rgba(255,255,255,0.4);
-  border-radius:50%;
-}
-</style>
-</head>
-
-<body>
-
-<nav>
-  <div>🌿 Malabar Aqua Farm</div>
-  <div>
-    <a href="#">Plants</a>
-    <a href="#">Shrimp</a>
-    <a href="#">Contact</a>
-  </div>
-</nav>
-
-<div class="hero">
-  <h1>God Mode Aquarium</h1>
-  <p>Immersive Aquatic Experience</p>
-</div>
-
-<!-- DEPTH LAYERS -->
-<div class="layer bg" id="bg"></div>
-<div class="layer mid" id="mid"></div>
-<div class="layer front" id="front"></div>
-
 <script>
 // =======================
-// 🎯 PARALLAX (DEPTH)
+// 🦐 SHRIMP AI (SLOW + SMOOTH)
 // =======================
-let mouse={x:0,y:0};
 
-document.addEventListener("mousemove",e=>{
-  mouse.x=e.clientX;
-  mouse.y=e.clientY;
-
-  let dx=(mouse.x/window.innerWidth-0.5)*20;
-  let dy=(mouse.y/window.innerHeight-0.5)*20;
-
-  document.getElementById("bg").style.transform=`translate(${dx*0.3}px,${dy*0.3}px)`;
-  document.getElementById("mid").style.transform=`translate(${dx*0.6}px,${dy*0.6}px)`;
-  document.getElementById("front").style.transform=`translate(${dx}px,${dy}px)`;
-});
-
-// =======================
-// 🫧 BUBBLES (DEPTH)
-// =======================
-function createBubble(layer,speed){
-  let b=document.createElement("div");
-  b.className="bubble";
-
-  let size=Math.random()*10+5;
-  b.style.width=size+"px";
-  b.style.height=size+"px";
-
-  b.style.left=Math.random()*window.innerWidth+"px";
-  b.style.top=window.innerHeight+"px";
-
-  layer.appendChild(b);
-
-  function rise(){
-    let y=parseFloat(b.style.top);
-    b.style.top=(y-speed)+"px";
-
-    if(y<0) b.remove();
-    else requestAnimationFrame(rise);
-  }
-  rise();
-}
-
-setInterval(()=>createBubble(bg,0.5),800);
-setInterval(()=>createBubble(mid,1),500);
-setInterval(()=>createBubble(front,2),300);
-
-// =======================
-// 🐟 BACKGROUND FISH SHADOW
-// =======================
-for(let i=0;i<3;i++){
-  let f=document.createElement("div");
-  f.className="fish";
-  f.style.left=Math.random()*window.innerWidth+"px";
-  f.style.top=Math.random()*window.innerHeight+"px";
-  f.innerHTML="🐟";
-
-  bg.appendChild(f);
-
-  let speed=Math.random()*0.5+0.2;
-
-  function swim(){
-    let x=parseFloat(f.style.left);
-    f.style.left=(x+speed)+"px";
-
-    if(x>window.innerWidth) f.style.left="-100px";
-
-    requestAnimationFrame(swim);
-  }
-  swim();
-}
-
-// =======================
-// 🦐 SHRIMP AI
-// =======================
 const shrimpData=[
   {
     src:"https://upload.wikimedia.org/wikipedia/commons/3/3e/Neocaridina_davidi_red_cherry.png",
@@ -189,20 +21,24 @@ shrimpData.forEach(data=>{
   s.src=data.src;
   s.className="shrimp";
 
-  front.appendChild(s);
+  document.body.appendChild(s);
 
   shrimps.push({
     el:s,
     x:data.x,
     y:data.y,
-    vx:Math.random()*1.5,
-    vy:Math.random()*1.5
+    vx:(Math.random()*1.5)*0.5,   // 🔥 HALF SPEED
+    vy:(Math.random()*1.5)*0.5
   });
 });
 
-// =======================
-// 🧠 SHRIMP MOVEMENT
-// =======================
+let mouse={x:0,y:0};
+
+document.addEventListener("mousemove",e=>{
+  mouse.x=e.clientX;
+  mouse.y=e.clientY;
+});
+
 function animate(){
   shrimps.forEach(s=>{
 
@@ -210,20 +46,24 @@ function animate(){
     let dy=s.y-mouse.y;
     let dist=Math.sqrt(dx*dx+dy*dy);
 
+    // 🧠 ESCAPE (reduced power)
     if(dist<150){
-      s.vx+=dx*0.03;
-      s.vy+=dy*0.03;
+      s.vx+=dx*0.015;   // 🔥 reduced from 0.03
+      s.vy+=dy*0.015;
     }
 
-    s.vx+=(Math.random()-0.5)*0.05;
-    s.vy+=(Math.random()-0.5)*0.05;
+    // 🌊 FLOATING (softer)
+    s.vx+=(Math.random()-0.5)*0.02;
+    s.vy+=(Math.random()-0.5)*0.02;
 
-    s.vx*=0.98;
-    s.vy*=0.98;
+    // SMOOTH DRAG
+    s.vx*=0.99;
+    s.vy*=0.99;
 
     s.x+=s.vx;
     s.y+=s.vy;
 
+    // BOUNDS
     if(s.x<0||s.x>window.innerWidth) s.vx*=-1;
     if(s.y<0||s.y>window.innerHeight) s.vy*=-1;
 
@@ -238,6 +78,3 @@ function animate(){
 
 animate();
 </script>
-
-</body>
-</html>
