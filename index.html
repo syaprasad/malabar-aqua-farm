@@ -5,74 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Malabar Aqua Farm</title>
 
-  <!-- Font -->
+  <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS (IMPORTANT) -->
-  <link rel="stylesheet" href="./styles.css">
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar">
-  <div class="logo">Malabar Aqua Farm</div>
+<!-- TOP BAR -->
+<div class="topbar">
+  ₹100 OFF on orders above ₹1999
+</div>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo">🌿 Malabar Aqua Farm</div>
+
   <nav>
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
+    <a href="#">Aquatic Plants</a>
+    <a href="#">Shrimps</a>
+    <a href="#">Accessories</a>
+    <a href="#">Contact</a>
   </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <img src="logo.png" alt="Logo">
-  <h1>Premium Aquatic Plants & Shrimps</h1>
-  <p>Clean. Natural. Beautiful aquascaping.</p>
-  <a href="#products"><button>Explore</button></a>
+  <h1>Premium Aquatic Store</h1>
+  <p>Plants • Shrimps • Aquarium Essentials</p>
 </section>
 
 <!-- PRODUCTS -->
-<section id="products" class="products">
-  <h2>Our Collection</h2>
+<section class="products">
+
+  <h2>Featured Products</h2>
 
   <div class="grid">
 
+    <!-- ITEM -->
     <div class="card">
-      <img src="https://picsum.photos/300/200?1">
-      <h3>Aquatic Plants</h3>
-      <p>Fresh and vibrant plants</p>
+      <img src="images/item1.jpg">
+
+      <h3>Cherry Shrimp</h3>
+      <p class="price">₹59</p>
+
+      <p class="stock">In Stock</p>
+
+      <button onclick="order('Cherry Shrimp')">Order</button>
     </div>
 
-    <div class="card">
-      <img src="https://picsum.photos/300/200?2">
-      <h3>Freshwater Shrimps</h3>
-      <p>Healthy premium breeds</p>
-    </div>
+    <!-- ITEM -->
+    <div class="card sold">
+      <img src="images/item2.jpg">
 
-    <div class="card">
-      <img src="https://picsum.photos/300/200?3">
-      <h3>Aquarium Setup</h3>
-      <p>Everything you need</p>
+      <h3>Amano Shrimp</h3>
+      <p class="price">₹80</p>
+
+      <p class="stock">Out of Stock</p>
+
+      <button disabled>Sold Out</button>
     </div>
 
   </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
-  <p>Order directly via WhatsApp</p>
-
-  <!-- PUT YOUR NUMBER -->
-  <a href="https://wa.me/919895008346" target="_blank">
-    <button class="whatsapp">Chat on WhatsApp</button>
-  </a>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <p>© 2026 Malabar Aqua Farm</p>
+<footer class="footer">
+
+  <div class="footer-grid">
+
+    <div>
+      <h4>Information</h4>
+      <p>About Us</p>
+      <p>Contact</p>
+      <p>Privacy Policy</p>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>Phone: +91 XXXXXXXX</p>
+      <p>Email: your@email.com</p>
+    </div>
+
+  </div>
+
 </footer>
+
+<script>
+function order(item){
+  const number = "91XXXXXXXXXX";
+  const msg = `I want to order ${item}`;
+  window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
+}
+</script>
 
 </body>
 </html>
