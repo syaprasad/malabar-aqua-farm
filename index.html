@@ -1,206 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malabar Aqua Farm</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Malabar Aquatic Plants</title>
 
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  text-align: center;
+  padding: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.search {
+  text-align: center;
+  margin: 10px;
+}
+
+.search input {
+  padding: 10px;
+  width: 80%;
+  max-width: 400px;
+  border-radius: 10px;
+  border: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+
+.card {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 12px;
+}
+
+.price { color: #22c55e; font-weight: bold; }
+
+.stock {
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.in { background: green; }
+.out { background: red; }
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background: #25D366;
+  color: white;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<header class="header">
-  <div class="logo">🌿 premium aquatic store</div>
+<header>🌿 Malabar Aquatic Plants 🐟</header>
 
-  <nav>
-    <a href="#plants">Plants</a>
-    <a href="#shrimps">Shrimps</a>
-    <a href="#fishfood">Fish Food</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Malabar Aqua farm </h1>
-  <p>Plants • Shrimps • Fish Food</p>
-</section>
-
-<!-- ================= CATEGORIES ================= -->
-<section class="categories">
-
-  <h2>Shop by Category</h2>
-
-  <div class="category-grid">
-
-    <div class="category-card">
-      <h3>Neocaridina Shrimp</h3>
-    </div>
-
-    <div class="category-card">
-      <h3>Aquatic Plants</h3>
-    </div>
-
-    <div class="category-card">
-      <h3>Live Fish Food</h3>
-    </div>
-
-    <div class="category-card">
-      <h3>Pellet Food</h3>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ================= SHRIMPS ================= -->
-<section id="shrimps" class="products">
-<h2>Neocaridina Shrimps</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="cherry.png">
-<h3>Cherry Shrimp</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Cherry Shrimp')">Order</button>
+<div class="search">
+<input type="text" id="search" placeholder="Search..." onkeyup="searchItems()">
 </div>
 
-<div class="card">
-<img src="blue.png">
-<h3>Blue Shrimp</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Blue Shrimp')">Order</button>
-</div>
-
-<div class="card">
-<img src="yellow.png">
-<h3>Yellow Shrimp</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Yellow Shrimp')">Order</button>
-</div>
-
-<div class="card">
-<img src="orange.png">
-<h3>Orange Shrimp</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Orange Shrimp')">Order</button>
-</div>
-
-<div class="card">
-<img src="black.png">
-<h3>Black Shrimp</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Black Shrimp')">Order</button>
-</div>
-
-<div class="card">
-<img src="rilli.png">
-<h3>Red Rilli Shrimp</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Red Rilli Shrimp')">Order</button>
-</div>
-
-</div>
-</section>
-
-<!-- ================= PLANTS ================= -->
-<section id="plants" class="products">
-<h2>Aquatic Plants</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="guppygrass.jpg">
-<h3>Najas guadalupensis (Guppy Grass)</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Guppy Grass')">Order</button>
-</div>
-
-<div class="card">
-<img src="foxtail.png">
-<h3>Ceratophyllum demersum (Foxtail)</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Foxtail')">Order</button>
-</div>
-
-<div class="card">
-<img src="montecarlo.png">
-<h3>Micranthemum tweediei (Monte Carlo)</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Monte Carlo')">Order</button>
-</div>
-
-</div>
-</section>
-
-<!-- ================= LIVE FOOD ================= -->
-<section id="fishfood" class="products">
-<h2>Live Fish Food</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="moina.png">
-<h3>Moina Culture</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Moina Culture')">Order</button>
-</div>
-
-</div>
-</section>
-
-<!-- ================= PELLET ================= -->
-<section class="products">
-<h2>Pellet Food</h2>
-
-<div class="grid">
-
-<div class="card">
-<img src="pellet.png">
-<h3>20g Loose Pack</h3>
-<p class="price">₹--</p>
-<p class="stock">Stock: --</p>
-<button onclick="order('Pellet Food 20gm')">Order</button>
-</div>
-
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-<div class="footer-grid">
-<div>
-<h4>Information</h4>
-<p>About Us</p>
-<p>Contact</p>
-</div>
-
-<div>
-<h4>Contact</h4>
-<p>Phone: +91 XXXX8XXX</p>
-</div>
-</div>
-</footer>
+<div class="grid" id="products"></div>
 
 <script>
-function order(item){
-  const number = "91XXXXXXXXXX";
-  const msg = `I want to order ${item}`;
-  window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`);
+
+// 👉 PUT YOUR NUMBER HERE
+let phone = "919895008346";
+
+let products = [
+
+{n:"Electric Blue Shrimp",p:60,s:1},
+{n:"Wild Shrimp",p:30,s:1},
+{n:"Red Cherry Shrimp",p:40,s:1},
+{n:"Mixed Guppy",p:40,s:1},
+{n:"Stone Catfish",p:75,s:1},
+{n:"Neon Tetra",p:40,s:1},
+
+{n:"Anubias Nana Big Leaf",p:350,s:1},
+{n:"Anubias Coin Leaf",p:250,s:1},
+{n:"Anubias Gold",p:300,s:1},
+
+{n:"Cabomba Green",p:60,s:1},
+{n:"Cabomba Red",p:60,s:1},
+{n:"Ludwigia Repens",p:55,s:1},
+{n:"Ludwigia Mini Super Red",p:70,s:1},
+{n:"Ludwigia Ovalis",p:100,s:1},
+
+{n:"Rotala Blood Red",p:120,s:1},
+{n:"Rotala Hra Red",p:60,s:1},
+{n:"Rotala Wallichii Mexicana",p:60,s:1},
+
+{n:"Eriocaulon Cinereum",p:75,s:0},
+{n:"Blyxa Japonica",p:70,s:1},
+{n:"Aponogeton Crispus",p:60,s:1},
+{n:"Hydrocotyle Tripartita",p:130,s:1},
+
+{n:"Java Fern",p:130,s:1},
+{n:"Java Fern Dwarf",p:130,s:1},
+{n:"Java Moss Coconut",p:340,s:1},
+{n:"Mini Xmas Moss",p:250,s:1},
+
+{n:"Wolffia",p:150,s:1},
+{n:"Duckweed",p:50,s:1},
+
+{n:"Dragon Rock",p:299,s:1},
+{n:"Black Sand",p:75,s:1},
+{n:"River Gravel",p:70,s:1},
+{n:"Pebbles",p:80,s:1}
+
+];
+
+// AUTO GENERATE
+function loadProducts(){
+  let container = document.getElementById("products");
+  container.innerHTML = "";
+
+  products.forEach(p=>{
+    let stock = p.s ? "In Stock" : "Out of Stock";
+    let cls = p.s ? "in" : "out";
+
+    container.innerHTML += `
+    <div class="card">
+      <img src="https://via.placeholder.com/200">
+      <h3>${p.n}</h3>
+      <p class="price">₹${p.p}</p>
+      <span class="stock ${cls}">${stock}</span>
+      ${p.s ? `<button onclick="order('${p.n}')">Order</button>` : `<button disabled>Out of Stock</button>`}
+    </div>`;
+  });
 }
+
+function order(item){
+  let msg = "Hello, I want to order: " + item;
+  window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg));
+}
+
+function searchItems(){
+  let input = document.getElementById("search").value.toLowerCase();
+  let cards = document.querySelectorAll(".card");
+
+  cards.forEach(card=>{
+    card.style.display = card.innerText.toLowerCase().includes(input) ? "block" : "none";
+  });
+}
+
+loadProducts();
+
 </script>
 
 </body>
